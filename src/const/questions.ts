@@ -1,0 +1,76 @@
+import {QuestionModel} from '../models/common/QuestionModel';
+
+const questionsList: QuestionModel[] = [
+    {
+        id:1,
+        translationId:"bronchialAsthma",
+        state:null
+      },
+      {
+        id:2,
+        translationId:"wereThereSurgeries",
+        state:null
+      },
+      {
+        id:3,
+        translationId:"isYourWorkConnectedEarlierOrNowWithHarmfulFactors",
+        state:null
+      },
+      {
+        id:4,
+        translationId:"glaucomaIncreasedIntraocularPressure",
+        state:null
+      },
+      {
+        id:5,
+        translationId:"headachesIncludingCauseless",
+        state:null
+      },
+      {
+        id:6,
+        translationId:"fungalDiseases",
+        state:null
+      },
+      {
+        id:7,
+        translationId:"diarrhea",
+        state:null
+      },
+      {
+        id:8,
+        translationId:"prolongedUnexplainedFever",
+        state:null
+      },
+      {
+        id:9,
+        translationId:"diseaseOfTheGastrointestinalTract",
+        state:null
+      },
+      {
+        id:10,
+        translationId:"skinDisease",
+        state:null
+      },
+      {
+        id:11,
+        translationId:"bloodDisease",
+        state:null
+      },
+      {
+        id:12,
+        translationId:"lungDisease",
+        state:null
+      },
+      {
+        id:13,
+        translationId:"liverDisease",
+        state:null
+      },
+      {
+        id:14,
+        translationId:"kidneyDisease",
+        state:null
+      },
+]
+
+export default questionsList;
