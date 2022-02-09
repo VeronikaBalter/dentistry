@@ -22,7 +22,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 //models
 import {PatientModel} from '@/models/patient/PatientModel';
 //components
-import PatientCard from '../../components/doctor/PatientCard.vue'
+import PatientCard from '@/components/doctor/PatientCard.vue'
 @Component({
   components: {
     PatientCard,
@@ -39,13 +39,13 @@ export default class Patients extends Vue {
       email:"jhon1234@gmail.com",
       phoneNumber:"+380653486823",
       genderId:1,
-      dateOfBirth:0,
+      dateOfBirth:13276111104170,
       statusId:1,
       doctorId:1,
       doctorFullName:"Petter Gertuv",
       discount:12,
-      lastVisit:0,
-      nextVisit:0,
+      lastVisit:1327611110417,
+      nextVisit:1327611110417,
       deposit:0,
       duty:200,
       login:"+380653486823"      

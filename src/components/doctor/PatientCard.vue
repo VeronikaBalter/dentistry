@@ -29,7 +29,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 //models
-import {PatientModel} from '../../models/patient/PatientModel'
+import {PatientModel} from '@/models/patient/PatientModel'
 
 @Component
 export default class PatientCard extends Vue {

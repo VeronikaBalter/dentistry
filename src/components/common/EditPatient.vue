@@ -106,8 +106,8 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import {PatientModel} from '@/models/patient/PatientModel';
 import {ListModel} from '@/models/common/ListModel';
 //const lists
-import genderList from '@/const/gender'
-import statusPatientList from '@/const/statusesPatient'
+import genderList from '@/const/lists/gender'
+import statusPatientList from '@/const/lists/statusesPatient'
 @Component({
   components: {
     

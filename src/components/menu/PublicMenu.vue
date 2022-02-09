@@ -8,12 +8,12 @@
     </b-col>
     <b-col>
       <b-row class="justify-content-md-center menu-tabs">
-        <b-col class="col-md-auto menu-tab">{{$t('home')}}</b-col>
-        <b-col class="col-md-auto menu-tab">{{$t('aboutUs')}}</b-col>
-        <b-col class="col-md-auto menu-tab">{{$t('services')}}</b-col>
-        <b-col class="col-md-auto menu-tab">{{$t('prices')}}</b-col>
-        <b-col class="col-md-auto menu-tab">{{$t('stock')}}</b-col>
-        <b-col class="col-md-auto menu-tab">{{$t('contacts')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/')">{{$t('home')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/aboutUs')">{{$t('aboutUs')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/services')">{{$t('services')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/prices')">{{$t('prices')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/stock')">{{$t('stock')}}</b-col>
+        <b-col class="col-md-auto menu-tab" v-on:click="$router.push('/contacts')">{{$t('contacts')}}</b-col>
       </b-row>
     </b-col>
     <b-col class="col-md-auto">
@@ -22,7 +22,7 @@
       </b-form-select>
     </b-col>
     <b-col class="col-md-auto">
-      <b-button variant="outline-primary" class="mt-3">{{$t('logIn')}}</b-button>
+      <b-button variant="outline-primary" class="mt-3" v-on:click="$router.push('/login')">{{$t('logIn')}}</b-button>
     </b-col>
   </b-row>
 </template>
@@ -32,7 +32,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 //models
 import {IdNameModel} from '@/models/common/IdNameModel';
 //const lists
-import langsList from '@/const/langs'
+import langsList from '@/const/lists/langs'
 
 @Component
 export default class PublicMenu extends Vue {

@@ -120,7 +120,6 @@ export default class PatientProfile extends Vue {
         statusId:1,
         description: '',
         price:200,
-        time:null,
         duration:30,
     },
    ];

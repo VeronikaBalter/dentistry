@@ -25,7 +25,7 @@ import QuestionInTheQuestionnaire from '../common/QuestionInTheQuestionnaire.vue
 //models
 import {QuestionModel} from '@/models/common/QuestionModel';
 //const lists
-import questionsList from '@/const/questions';
+import questionsList from '@/const/lists/questions';
 @Component({
   components: {
     QuestionInTheQuestionnaire

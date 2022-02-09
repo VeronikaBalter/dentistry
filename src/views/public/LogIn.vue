@@ -28,5 +28,6 @@ export default class LogIn extends Vue {
     border-radius: 20px;
     margin: auto;
     margin-top: 10%;
+    max-width: 350px;
 }
 </style>
