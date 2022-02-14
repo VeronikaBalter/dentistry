@@ -30,7 +30,6 @@
             </b-col>
             <b-col>
                 <label>{{$t('status')}}</label>
-                <b-select v-model="localPatient.statusId" :options="statuses"></b-select>
                 <b-select v-model="localPatient.statusId">
                     <option v-for="status in statuses" :key="status.value" :value="status.value">{{ $t(status.text)}}</option>
                 </b-select>
@@ -106,7 +105,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import {PatientModel} from '@/models/patient/PatientModel';
 import {ListModel} from '@/models/common/ListModel';
 //const lists
-import genderList from '@/const/lists/gender'
+import genderList from '@/const/lists/genders'
 import statusPatientList from '@/const/lists/statusesPatient'
 @Component({
   components: {

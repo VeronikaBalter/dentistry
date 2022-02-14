@@ -9,7 +9,7 @@
         ref="visitsTable"
         sticky-header
         :items="snapshots"
-        :fields="headers"
+        :fields="getHeaders()"
         striped
         primary-key="a">
       </b-table>
@@ -32,9 +32,10 @@ import EmptyPage from '../../common/EmptyPage.vue';
   },
 })
 export default class Snapshots extends Vue {    
-    @Prop() private patientId!:number;    
-    private snapshots:any=[];
-    private headers:TableHeaderModel[] = [
+  @Prop() private patientId!:number;    
+  private snapshots:any=[];
+  private getHeaders():TableHeaderModel[]{
+    return [
         { key: 'id', label:"ID", sortable: false },
         { key: 'date', label:this.$t('dateOfDownload').toString(), sortable: false},
         { key: 'snapshot', label:this.$t('snapshot').toString(), sortable: false },
@@ -43,6 +44,7 @@ export default class Snapshots extends Vue {
         { key: 'description', label:this.$t('description').toString(), sortable: false},
         { key: 'actions', label: '', sortable: false}
       ]
+  }
 }
 </script>
 <style>

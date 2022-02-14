@@ -9,7 +9,7 @@
         ref="visitsTable"
         sticky-header
         :items="notes"
-        :fields="headers"
+        :fields="getHeaders()"
         striped
         primary-key="a">
       </b-table>
@@ -32,9 +32,10 @@ import EmptyPage from '../../common/EmptyPage.vue';
   },
 })
 export default class Notes extends Vue {    
-    @Prop() private patientId!:number;    
-    private notes:any=[];
-    private headers:TableHeaderModel[] = [
+  @Prop() private patientId!:number;    
+  private notes:any=[];
+  private getHeaders():TableHeaderModel[]{
+    return [
         { key: 'id', label:"ID", sortable: false },
         { key: 'name', label:this.$t('name').toString(), sortable: false },
         { key: 'description', label:this.$t('description').toString(), sortable: true },
@@ -42,6 +43,7 @@ export default class Notes extends Vue {
         { key: 'priorities', label:this.$t('priorities').toString(), sortable: true },
         { key: 'actions', label: '', sortable: true }
       ]
+  }
 }
 </script>
 <style>

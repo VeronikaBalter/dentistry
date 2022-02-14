@@ -113,10 +113,21 @@ export default class PatientProfile extends Vue {
         };
     private visits:VisitModel[] = [{
         id:1234,
-        date:1573052400000,
-        doctorId:23, 
+        date:1644498438259,
+        doctorId:1, 
         doctorFullName:"Petter Gertuv",
         typeId:1,
+        statusId:1,
+        description: '',
+        price:200,
+        duration:30,
+    },
+    {
+        id:34,
+        date:1644498433259,
+        doctorId:1, 
+        doctorFullName:"Team Twer",
+        typeId:2,
         statusId:1,
         description: '',
         price:200,

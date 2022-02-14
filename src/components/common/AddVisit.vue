@@ -18,7 +18,7 @@
         <b-row class="mb-2">
             <b-col>
                 <label>{{$t('dateOfVisit')}}</label>
-                <datetime type="datetime" v-model="newVisit.date"></datetime>
+                <datetime type="datetime" v-model="dateVisit"></datetime>
             </b-col>
             <b-col>
                 <label>{{$t('duration')}}</label>
@@ -28,7 +28,7 @@
         <b-row class="mb-2">
             <b-col>
                 <label>{{$t('status')}}</label>
-                <b-select v-model="newVisit.status" :options="statuses">
+                <b-select v-model="newVisit.statusId">
                     <option v-for="status in statuses" :key="status.value" :value="status.value">{{ $t(status.text)}}</option>
                 </b-select>
             </b-col>
@@ -61,17 +61,7 @@ import statusesVisitList from '@/const/lists/statusesVisit';
 export default class AddVisit extends Vue { 
     @Prop() private modalShow!:boolean;
     private localModalShow:boolean = false;
-    private newVisit:VisitModel = {
-        id:0,
-        typeId:1,
-        doctorId:1,
-        statusId:1,
-        date:null,
-        duration:30,
-        description:'',
-        doctorFullName:'',
-        price:0
-    }
+    private newVisit:VisitModel =  new VisitModel();
     private doctors:any =[
         {
             value:1,
@@ -84,9 +74,16 @@ export default class AddVisit extends Vue {
     private modalShowWatch(value:boolean){
       this.localModalShow = this.modalShow;
     }
-    // private created() {
-    //   this.questions.forEach((el:any) => this.questionsOldState.push(el));
-    // }
+    get dateVisit():string{
+        if(this.newVisit.date && this.newVisit.date>0)
+            return new Date(this.newVisit.date).toISOString();
+        else 
+            return new Date(Date.now()).toISOString();
+    }
+    set dateVisit(value:string){
+        this.newVisit.date = new Date(value).getTime();
+    }
+
 
     private newValueQuestion(item:any){
       //this.questions[item.id-1].state = item.value

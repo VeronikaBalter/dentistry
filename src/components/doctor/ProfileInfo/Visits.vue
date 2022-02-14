@@ -11,12 +11,15 @@
         <b-table
             ref="visitsTable"
             sticky-header
-            :items="visits"
-            :fields="headers"
+            :items="localVisits"
+            :fields="getHeaders()"
             striped
             primary-key="a"
             @row-clicked="onRowClicked"
         >
+            <template  #cell(date)="data" >
+                <div>{{$moment(data.item.data).format('L')}}</div>
+            </template>
             <template  #cell(statusId)="data" >
                 <div>{{getStatus(data.item.statusId)}}</div>
             </template>
@@ -32,7 +35,8 @@
             :visit="getSelectedVisit()"
             :modalShow="editVisitShow"
             @changesModalShow="editVisitChangesModalShow"
-            @changesSaved="saveEditVisit"/>
+            @changesSaved="saveEditVisit"
+            @deleteItem="deleteItem"/>
     </div>
 </template>
 
@@ -58,10 +62,19 @@ import EditVisit from '@/components/common/EditVisit.vue';
 export default class Visits extends Vue {    
     @Prop() private visits!:VisitModel[];
     @Prop() private patientId!:number;
+    private localVisits:VisitModel[] = this.visits;
     private addVisitShow:boolean = false;
     private editVisitShow:boolean = false;
     private selectedVisitId:number = -1;
-    private headers:TableHeaderModel[] = [
+    private filters:VisitFilterModel = new VisitFilterModel();
+    private statuses:ListModel[] = statusesVisitList;
+    private types:ListModel[] = typesVisitList;
+    @Watch('visit')
+    private visitWatch(value:VisitModel){
+      this.localVisits = this.visits;
+    }
+    private getHeaders():TableHeaderModel[]{
+        return [
         { key: 'id', label:"ID", sortable: false },
         { key: 'date', label:this.$t('date').toString(), sortable: true },
         { key: 'doctorFullName', label:this.$t('doctor').toString(), sortable: false },
@@ -69,9 +82,7 @@ export default class Visits extends Vue {
         { key: 'statusId', label:this.$t('status').toString(), sortable: true },
         { key: 'description', label:this.$t('description').toString(), sortable: false }
       ]
-    private filters:VisitFilterModel = new VisitFilterModel();
-    private statuses:ListModel[] = statusesVisitList;
-    private types:ListModel[] = typesVisitList;
+    }
     private getStatus(id:number):string{
         let status = this.statuses.filter((item: ListModel)=>item.value == id);
         return this.$t(status[0].text).toString();
@@ -85,7 +96,7 @@ export default class Visits extends Vue {
         this.editVisitShow = true;
     }
     private getSelectedVisit():VisitModel{
-        return this.visits.filter((item: VisitModel)=>item.id == this.selectedVisitId)[0];
+        return this.localVisits.filter((item: VisitModel)=>item.id == this.selectedVisitId)[0];
     }
 
     private addVisitChangesModalShow(){
@@ -105,6 +116,11 @@ export default class Visits extends Vue {
         this.editVisitShow = false;
         this.selectedVisitId = -1;
         //this.visit = visit;
+    }
+    private deleteItem(id:number){
+        //to do axios
+        this.editVisitShow = false;
+        this.localVisits = this.localVisits.splice(this.localVisits.indexOf(this.localVisits.filter((item: VisitModel)=>item.id == id)[0]), 1);
     }
 }
 </script>

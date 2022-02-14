@@ -9,7 +9,7 @@
         ref="documentationTable"
         sticky-header
         :items="documentations"
-        :fields="headers"
+        :fields="getHeaders()"
         striped
         primary-key="a">
       </b-table>
@@ -32,15 +32,17 @@ import EmptyPage from '../../common/EmptyPage.vue';
   },
 })
 export default class Documentation extends Vue {    
-    @Prop() private patientId!:number;    
-    private documentations:any=[];
-    private headers:TableHeaderModel[] = [
+  @Prop() private patientId!:number;    
+  private documentations:any=[];
+  private getHeaders():TableHeaderModel[]{
+    return [
         { key: 'id', label:"ID", sortable: false },
         { key: 'file', label:this.$t('file').toString(), sortable: false},
         { key: 'date', label:this.$t('dateOfDownload').toString(), sortable: false},
         { key: 'description', label:this.$t('description').toString(), sortable: false},
         { key: 'actions', label: '', sortable: false}
       ]
+  }
 }
 </script>
 <style>

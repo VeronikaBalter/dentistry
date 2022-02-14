@@ -200,3 +200,19 @@ hr {
 .save-edit {
     margin-left: 10px;
 }
+
+table.table-striped tbody tr:nth-of-type(odd):hover{
+    background-color: #dcdcdc !important;
+    cursor: pointer;
+}
+
+.table.table-striped tbody tr:hover{
+    background-color: #dcdcdc !important;
+    cursor: pointer;
+}
+.btn:focus{
+    box-shadow: none !important;
+}
+.btn:active{
+    box-shadow: none !important;
+}

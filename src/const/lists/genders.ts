@@ -1,6 +1,6 @@
 import {ListModel} from '@/models/common/ListModel';
 
-const genderList: ListModel[] = [
+const gendersList: ListModel[] = [
     {
         value:1,
         text:'male'
@@ -15,4 +15,4 @@ const genderList: ListModel[] = [
     },
 ]
 
-export default genderList;
+export default gendersList;

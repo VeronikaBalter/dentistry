@@ -18,7 +18,7 @@
         <b-row class="mb-2">
             <b-col>
                 <label>{{$t('dateOfVisit')}}</label>
-                <datetime type="datetime" v-model="localVisit.date"></datetime>
+                <datetime type="datetime" v-model="dateVisit"></datetime>
             </b-col>
             <b-col>
                 <label>{{$t('duration')}}</label>
@@ -28,7 +28,7 @@
         <b-row class="mb-2">
             <b-col>
                 <label>{{$t('status')}}</label>
-                <b-select v-model="localVisit.status" :options="statuses">
+                <b-select v-model="localVisit.statusId">
                     <option v-for="status in statuses" :key="status.value" :value="status.value">{{ $t(status.text)}}</option>
                 </b-select>
             </b-col>
@@ -86,11 +86,14 @@ export default class AddVisit extends Vue {
     private visitWatch(value:VisitModel){
       this.localVisit = this.visit;
     }
-    get dateVisit():Date{
-        return new Date(this.localVisit.date ? this.localVisit.date : '');
+    get dateVisit():string{
+        if(this.localVisit.date && this.localVisit.date>0)
+            return new Date(this.localVisit.date).toISOString();
+        else 
+            return new Date(Date.now()).toISOString();
     }
-    set dateVisit(value:Date){
-        this.localVisit.date = value.getTime();
+    set dateVisit(value:string){
+        this.localVisit.date = new Date(value).getTime();
     }
 
     private newValueQuestion(item:any){
@@ -100,9 +103,11 @@ export default class AddVisit extends Vue {
       //this.questionsOldState = this.questions;
       //this.$emit('changesSaved',this.questions);
     }
+    private deleteVisit(){
+        this.$emit('deleteItem',this.localVisit.id);
+    }
     private hideEvent(){
-      //this.questions = this.questionsOldState;
-      this.$emit('changesModalShow');
+        this.$emit('changesModalShow');
     }   
 }
 </script>
